@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'website-development';
+  title = 'website development';
+  constructor(private renderer: Renderer2) { }
+  emailContact: string = 'sales@godparticles.in';
+  ngAfterViewInit(){
+    const script = this.renderer.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'assets/js/jquery.js';
+    script.src = 'assets/js/vendors.min.js';
+    script.src = 'assets/js/main.js';
+
+    this.renderer.appendChild(document.body, script);
+
+
+
+  }
+
 }
